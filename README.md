@@ -2,8 +2,6 @@
 
 [![build-img]][build-url]
 [![pkg-img]][pkg-url]
-[![reportcard-img]][reportcard-url]
-[![coverage-img]][coverage-url]
 [![version-img]][version-url]
 
 Go package to easily construct JSON without defined types.
@@ -13,6 +11,8 @@ Go package to easily construct JSON without defined types.
 * Very simple API.
 * Dependency-free.
 * Clean and tested code.
+
+See [docs][pkg-url] for more details.
 
 ## Install
 
@@ -50,10 +50,6 @@ fmt.Printf("%s\n", raw)
 
 See examples: [example_test.go](example_test.go).
 
-## Documentation
-
-See [these docs][pkg-url] for more details.
-
 ## License
 
 [MIT License](LICENSE).
@@ -62,9 +58,5 @@ See [these docs][pkg-url] for more details.
 [build-url]: https://github.com/cristalhq/jsn/actions
 [pkg-img]: https://pkg.go.dev/badge/cristalhq/jsn
 [pkg-url]: https://pkg.go.dev/github.com/cristalhq/jsn
-[reportcard-img]: https://goreportcard.com/badge/cristalhq/jsn
-[reportcard-url]: https://goreportcard.com/report/cristalhq/jsn
-[coverage-img]: https://codecov.io/gh/cristalhq/jsn/branch/main/graph/badge.svg
-[coverage-url]: https://codecov.io/gh/cristalhq/jsn
 [version-img]: https://img.shields.io/github/v/release/cristalhq/jsn
 [version-url]: https://github.com/cristalhq/jsn/releases

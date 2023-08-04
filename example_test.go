@@ -31,6 +31,33 @@ func Example() {
 	//}
 }
 
+func ExampleAO() {
+	j := jsn.AO{
+		{"a": 1},
+		{"b": 2, "c": 3},
+		{"d": jsn.O{"1": "2"}},
+	}
+
+	raw, _ := json.MarshalIndent(j, "", "  ")
+	fmt.Printf("%s\n", raw)
+
+	// Output:
+	// [
+	//   {
+	//     "a": 1
+	//   },
+	//   {
+	//     "b": 2,
+	//     "c": 3
+	//   },
+	//   {
+	//     "d": {
+	//       "1": "2"
+	//     }
+	//   }
+	// ]
+}
+
 func ExampleNumber() {
 	j := jsn.O{
 		"x": 123456.00000000000000000000000000000000000000001,

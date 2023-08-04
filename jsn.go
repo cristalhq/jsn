@@ -6,6 +6,9 @@ type A = []any
 // O represents JSON object.
 type O = map[string]any
 
+// AO represents JSON array of JSON objects.
+type AO = []O
+
 // N represents JSON number.
 type N string
 
