@@ -1,5 +1,12 @@
 package jsn
 
+import (
+	"bytes"
+	"encoding/json"
+	"errors"
+	"io"
+)
+
 // A represents JSON array.
 type A = []any
 
@@ -15,3 +22,24 @@ type N string
 func (n N) MarshalJSON() ([]byte, error) {
 	return []byte(n), nil
 }
+
+// Unmarshal ...
+func Unmarshal(b []byte, v any) error {
+	return UnmarshalFrom(bytes.NewReader(b), v)
+}
+
+// UnmarshalFrom ...
+func UnmarshalFrom(r io.Reader, v any) error {
+	d := json.NewDecoder(r)
+	d.DisallowUnknownFields()
+
+	if err := d.Decode(v); err != nil {
+		return err
+	}
+	if d.More() {
+		return errX
+	}
+	return nil
+}
+
+var errX = errors.New("body must contain only one JSON object")
