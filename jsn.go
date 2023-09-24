@@ -39,9 +39,9 @@ func UnmarshalFrom(r io.Reader, v any) error {
 		return err
 	}
 	if d.More() {
-		return errX
+		return errMore
 	}
 	return nil
 }
 
-var errX = errors.New("body must contain only one JSON object")
+var errMore = errors.New("body must contain only one JSON entity")

@@ -33,7 +33,11 @@ func TestUnmarshal(t *testing.T) {
 		},
 		{
 			input:  `{"abc": 123}a`,
-			errStr: "body must contain only one JSON object",
+			errStr: "body must contain only one JSON entity",
+		},
+		{
+			input:  `[123]{"a":"b"}`,
+			errStr: "body must contain only one JSON entity",
 		},
 		{
 			input:  `{"abc`,
