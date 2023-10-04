@@ -44,4 +44,13 @@ func UnmarshalFrom(r io.Reader, v any) error {
 	return nil
 }
 
+// MustMarshal an object to JSON, and panics if any error occurs.
+func MustMarshal(obj any) []byte {
+	b, err := json.Marshal(obj)
+	if err != nil {
+		panic(err)
+	}
+	return b
+}
+
 var errMore = errors.New("body must contain only one JSON entity")
