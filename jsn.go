@@ -53,4 +53,14 @@ func MustMarshal(obj any) []byte {
 	return b
 }
 
+// Indent is like [json.MarshalIndent] but with predefined params.
+// Panics if any error occurs.
+func Indent(obj any) string {
+	b, err := json.MarshalIndent(obj, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+	return string(b)
+}
+
 var errMore = errors.New("body must contain only one JSON entity")
