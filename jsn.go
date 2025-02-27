@@ -31,15 +31,15 @@ func (f F) MarshalJSON() ([]byte, error) {
 	return []byte(fmt.Sprintf("%.1f", f)), nil
 }
 
-// Unmarshal only 1 JSON entity from the input.
+// UnmarshalBytes only 1 JSON entity from the input.
 // Disallows unknown fields if the argument is a struct.
-func Unmarshal(b []byte, v any) error {
-	return UnmarshalFrom(bytes.NewReader(b), v)
+func UnmarshalBytes(b []byte, v any) error {
+	return Unmarshal(bytes.NewReader(b), v)
 }
 
-// UnmarshalFrom only 1 JSON entity from the input.
+// Unmarshal only 1 JSON entity from the input.
 // Disallows unknown fields if the argument is a struct.
-func UnmarshalFrom(r io.Reader, v any) error {
+func Unmarshal(r io.Reader, v any) error {
 	d := json.NewDecoder(r)
 	d.DisallowUnknownFields()
 
