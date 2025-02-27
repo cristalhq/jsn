@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 )
 
@@ -21,6 +22,13 @@ type N string
 
 func (n N) MarshalJSON() ([]byte, error) {
 	return []byte(n), nil
+}
+
+// F represents JSON number with always presented decimal.
+type F float64
+
+func (f F) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf("%.1f", f)), nil
 }
 
 // Unmarshal only 1 JSON entity from the input.

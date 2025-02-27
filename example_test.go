@@ -76,6 +76,28 @@ func ExampleNumber() {
 	//}
 }
 
+func ExampleF() {
+	nums := []jsn.F{
+		jsn.F(0),
+		jsn.F(1),
+		jsn.F(10),
+		jsn.F(-1),
+		jsn.F(-0.1),
+	}
+
+	for _, f := range nums {
+		raw, _ := json.MarshalIndent(f, "", "  ")
+		fmt.Printf("%s\n", raw)
+	}
+
+	// Output:
+	// 0.0
+	// 1.0
+	// 10.0
+	// -1.0
+	// -0.1
+}
+
 func ExampleIndent() {
 	j := jsn.O{
 		"x": 123456.00000000000000000000000000000000000000001,
