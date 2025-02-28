@@ -38,7 +38,13 @@ func (f F) MarshalJSON() ([]byte, error) {
 
 // Unmarshal only 1 JSON entity from the input.
 // Disallows unknown fields if the argument is a struct.
-func Unmarshal(r io.Reader, v any) error {
+func Unmarshal(b []byte, v any) error {
+	return UnmarshalFrom(bytes.NewReader(b), v)
+}
+
+// UnmarshalFrom reader only 1 JSON entity from the input.
+// Disallows unknown fields if the argument is a struct.
+func UnmarshalFrom(r io.Reader, v any) error {
 	d := json.NewDecoder(r)
 	d.DisallowUnknownFields()
 
