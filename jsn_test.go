@@ -47,7 +47,7 @@ func TestUnmarshal(t *testing.T) {
 
 	for _, tc := range testCases {
 		var val any
-		err := UnmarshalBytes([]byte(tc.input), &val)
+		err := Unmarshal([]byte(tc.input), &val)
 		if err != nil {
 			if tc.errStr == "" {
 				t.Fatal(err)
