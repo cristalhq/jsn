@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
+	"strconv"
 )
 
 // A represents JSON array.
@@ -24,17 +24,16 @@ func (n N) MarshalJSON() ([]byte, error) {
 	return []byte(n), nil
 }
 
-// F represents JSON number with always presented decimal.
+// F represents JSON number with always presented decimal part.
 type F float64
 
 func (f F) MarshalJSON() ([]byte, error) {
-	return []byte(fmt.Sprintf("%.1f", f)), nil
-}
+	s := strconv.FormatFloat(float64(f), 'f', -1, 64)
 
-// UnmarshalBytes only 1 JSON entity from the input.
-// Disallows unknown fields if the argument is a struct.
-func UnmarshalBytes(b []byte, v any) error {
-	return Unmarshal(bytes.NewReader(b), v)
+	if float64(f) == float64(int64(f)) {
+		s += ".0"
+	}
+	return []byte(s), nil
 }
 
 // Unmarshal only 1 JSON entity from the input.
