@@ -7,7 +7,7 @@ import (
 	"github.com/cristalhq/jsn"
 )
 
-func Example() {
+func ExampleO() {
 	j := jsn.O{
 		"hello": "world",
 		"do": jsn.A{
@@ -16,8 +16,7 @@ func Example() {
 		"x": jsn.N("123456.00000000000000000000000000000000000000001"),
 	}
 
-	raw, _ := json.MarshalIndent(j, "", "  ")
-	fmt.Printf("%s\n", raw)
+	printJSON(j)
 
 	// Output:
 	//{
@@ -38,8 +37,7 @@ func ExampleAO() {
 		{"d": jsn.O{"1": "2"}},
 	}
 
-	raw, _ := json.MarshalIndent(j, "", "  ")
-	fmt.Printf("%s\n", raw)
+	printJSON(j)
 
 	// Output:
 	// [
@@ -58,15 +56,14 @@ func ExampleAO() {
 	// ]
 }
 
-func ExampleNumber() {
+func ExampleN() {
 	j := jsn.O{
 		"x": 123456.00000000000000000000000000000000000000001,
 		"y": jsn.N("123456.00000000000000000000000000000000000000001"),
 		"z": "123456.00000000000000000000000000000000000000001",
 	}
 
-	raw, _ := json.MarshalIndent(j, "", "  ")
-	fmt.Printf("%s\n", raw)
+	printJSON(j)
 
 	// Output:
 	//{
@@ -88,8 +85,7 @@ func ExampleF() {
 	}
 
 	for _, f := range nums {
-		raw, _ := json.MarshalIndent(f, "", "  ")
-		fmt.Printf("%s\n", raw)
+		printJSON(f)
 	}
 
 	// Output:
@@ -125,4 +121,12 @@ func ExampleIndent() {
 	//     "b": "ccc"
 	//   }
 	// }
+}
+
+func printJSON(v any) {
+	raw, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(raw))
 }
